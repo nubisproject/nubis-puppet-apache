@@ -54,7 +54,7 @@ class nubis_apache($timeout=120, $port=80) {
     $project_name:
       tags     => [ 'apache' ],
       port     => $port,
-      http     => "http://localhost:${port}",
+      check     => "/usr/bin/curl -If http://localhost:${port}",
       interval => '30s',
   }
 
