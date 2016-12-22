@@ -1,0 +1,14 @@
+{
+  "name": "nubis-nubis_apache",
+  "version": "0.1.0",
+  "author": "nubis",
+  "summary": "Nubis Apache Wrapper",
+  "license": "MPL-2.0",
+  "source": "https://github.com/nubisproject/nubis-puppet-apache.git",
+  "project_page": "https://github.com/nubisproject/nubis-puppet-apache",
+  "issues_url": "https://github.com/nubisproject/nubis-puppet-apache/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
