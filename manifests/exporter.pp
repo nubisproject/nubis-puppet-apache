@@ -1,3 +1,4 @@
+class nubis_apache::exporter {
 $apache_exporter_version = '0.2'
 $apache_exporter_url = "https://github.com/neezgee/apache_exporter/archive/v${apache_exporter_version}.tar.gz"
 
@@ -47,4 +48,5 @@ file { '/etc/consul/svc-apache-exporter.json':
   group  => root,
   mode   => '0644',
   source => "puppet:///modules/${module_name}/svc-apache-exporter.json",
+}
 }

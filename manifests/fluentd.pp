@@ -1,3 +1,4 @@
+class nubis_apache::fluentd {
 class { 'fluentd':
   service_ensure => stopped
 }
@@ -77,3 +78,4 @@ fluentd::filter { 'apache_prometheus':
 # lint:endignore
       }
     }
+}
