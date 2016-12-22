@@ -43,8 +43,9 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-include nubis_apache::apache_exporter
+
 
 class nubis_apache {
-
+  include nubis_apache::apache_exporter
+  include nubis_apache::fluentd
 }
