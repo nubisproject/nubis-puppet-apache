@@ -47,6 +47,7 @@ class nubis_apache($timeout=120, $port=80) {
 
   include ::nubis_apache::exporter
   include ::nubis_apache::fluentd
+  include ::nubis_apache::atomic
   
   include nubis_discovery
 
