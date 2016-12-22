@@ -43,9 +43,35 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-
-
-class nubis_apache {
+class nubis_apache($project_name, $timeout=120, $port=80) {
   include nubis_apache::apache_exporter
   include nubis_apache::fluentd
+  include nubis_discovery
+
+  nubis::discovery::service {
+    $project_name:
+      tags     => [ 'apache' ],
+      port     => $port,
+      http     => "http://localhost:${port}",
+      interval => '30s',
+  }
+
+  class {
+    'apache':
+        mpm_module          => 'event',
+        keepalive           => 'On',
+        timeout             => $timeout,
+        keepalive_timeout   => $timeout,
+        default_mods        => true,
+        default_vhost       => false,
+        default_confd_files => false,
+        service_enable      => false,
+        service_ensure      => false;
+    'apache::mod::status':;
+    'apache::mod::remoteip':
+        proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
+    'apache::mod::expires':
+        expires_default => 'access plus 30 minutes';
+}
+
 }
