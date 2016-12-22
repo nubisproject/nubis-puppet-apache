@@ -44,8 +44,10 @@
 #
 
 class nubis_apache($project_name, $timeout=120, $port=80) {
-  include nubis_apache::apache_exporter
-  include nubis_apache::fluentd
+
+  #include ::nubis_apache::apache_exporter
+  include ::nubis_apache::fluentd
+  
   include nubis_discovery
 
   nubis::discovery::service {
@@ -72,6 +74,5 @@ class nubis_apache($project_name, $timeout=120, $port=80) {
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
     'apache::mod::expires':
         expires_default => 'access plus 30 minutes';
-}
-
+  }
 }
