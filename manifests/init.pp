@@ -45,7 +45,7 @@
 
 class nubis_apache($project_name, $timeout=120, $port=80) {
 
-  #include ::nubis_apache::apache_exporter
+  include ::nubis_apache::exporter
   include ::nubis_apache::fluentd
   
   include nubis_discovery
