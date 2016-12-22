@@ -43,7 +43,7 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-class nubis_apache($project_name, $timeout=120, $port=80) {
+class nubis_apache($timeout=120, $port=80) {
 
   include ::nubis_apache::exporter
   include ::nubis_apache::fluentd

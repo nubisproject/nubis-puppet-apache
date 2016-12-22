@@ -1,5 +1,6 @@
 class nubis_apache::fluentd {
-class { 'fluentd':
+
+class { '::fluentd':
   service_ensure => stopped
 }
 
