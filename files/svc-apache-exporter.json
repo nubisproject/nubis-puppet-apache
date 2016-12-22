@@ -1,0 +1,11 @@
+{
+  "service": {
+    "name": "apache-exporter",
+    "port": 9103,
+    "check": {
+      "http": "http://localhost:9103/metrics",
+      "notes": "apache_exporter is healthy and full of yummy metrics",
+      "interval": "60s"
+    }
+  }
+}

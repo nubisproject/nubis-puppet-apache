@@ -21,7 +21,7 @@ case $::osfamily {
       owner  => root,
       group  => root,
       mode   => '0755',
-      source => 'puppet:///nubis/files/apache_exporter.init',
+      source => "puppet:///modules/${module_name}/apache_exporter.init",
     }->
     service { 'apache_exporter':
       enable => true,
@@ -33,7 +33,7 @@ case $::osfamily {
       owner  => root,
       group  => root,
       mode   => '0644',
-      source => 'puppet:///nubis/files/apache_exporter.upstart',
+      source => "puppet:///modules/${module_name}/apache_exporter.upstart",
     }
   }
   default: {
@@ -46,5 +46,5 @@ file { '/etc/consul/svc-apache-exporter.json':
   owner  => root,
   group  => root,
   mode   => '0644',
-  source => 'puppet:///nubis/files/svc-apache-exporter.json',
+  source => "puppet:///modules/${module_name}/svc-apache-exporter.json",
 }
