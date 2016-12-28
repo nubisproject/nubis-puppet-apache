@@ -52,7 +52,7 @@ class nubis_apache($timeout=120, $port=80) {
   include nubis_discovery
 
   nubis::discovery::service {
-    $project_name:
+    $::project_name:
       tags     => [ 'apache' ],
       port     => $port,
       check    => "/usr/bin/curl -If http://localhost:${port}",
