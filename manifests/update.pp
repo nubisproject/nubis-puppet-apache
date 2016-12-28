@@ -11,13 +11,13 @@ class nubis_apache::update($script_source, $script_interval=undef) {
     validate_hash($script_interval)
 
     cron { 'update-site':
-      command => 'nubis-cron update-site /usr/local/bin/nubis-update-site',
-      user    => 'root',
-      minute  => pick($script_interval['minute'], '*'),
-      hour    => pick($script_interval['hour'], '*'),
-      date    => pick($script_interval['date'], '*'),
-      month   => pick($script_interval['month'], '*'),
-      weekday => pick($script_interval['weekday'], '*'),
+      command  => 'nubis-cron update-site /usr/local/bin/nubis-update-site',
+      user     => 'root',
+      minute   => pick($script_interval['minute'], '*'),
+      hour     => pick($script_interval['hour'], '*'),
+      month    => pick($script_interval['month'], '*'),
+      monthday => pick($script_interval['monthday'], '*'),
+      weekday  => pick($script_interval['weekday'], '*'),
     }
   }
 }
