@@ -51,7 +51,7 @@ class nubis_apache($timeout=120, $port=80, $update_script_source=undef) {
 
   if $update_script_source {
     class { 'nubis_apache::update':
-      script   => $update_script_source,
+      script_source   => $update_script_source,
     }
   }
 
