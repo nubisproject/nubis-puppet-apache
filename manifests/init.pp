@@ -43,11 +43,17 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-class nubis_apache($timeout=120, $port=80) {
+class nubis_apache($timeout=120, $port=80, $update_script_source=undef) {
 
   include ::nubis_apache::exporter
   include ::nubis_apache::fluentd
   include ::nubis_apache::atomic
+
+  if $update_script_source {
+    class { 'nubis_apache::update':
+      script   => $update_script_source,
+    }
+  }
 
   include nubis_discovery
 
