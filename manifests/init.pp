@@ -43,7 +43,7 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-class nubis_apache($timeout=120, $port=80, $update_script_source=undef) {
+class nubis_apache($timeout=120, $port=80, $update_script_source=undef, $update_script_interval=undef) {
 
   include ::nubis_apache::exporter
   include ::nubis_apache::fluentd
@@ -52,6 +52,7 @@ class nubis_apache($timeout=120, $port=80, $update_script_source=undef) {
   if $update_script_source {
     class { 'nubis_apache::update':
       script_source   => $update_script_source,
+      script_interval => $update_script_interval,
     }
   }
 
@@ -81,5 +82,23 @@ class nubis_apache($timeout=120, $port=80, $update_script_source=undef) {
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
     'apache::mod::expires':
         expires_default => 'access plus 30 minutes';
+  }
+
+  file { "/etc/nubis.d/99-${::project_name}":
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    content => "#!/bin/bash -l
+# Runs once on instance boot, after all infra services are up and running
+
+# Pull latest version
+if [ -x /usr/local/bin/nubis-update-site ]; then
+  /usr/local/bin/nubis-update-site
+fi
+
+# Start serving it
+service ${::apache::params::service_name} start
+"
   }
 }
