@@ -10,7 +10,7 @@ class nubis_apache::update($script_source, $script_interval=undef) {
   if $script_interval {
     validate_hash($script_interval)
 
-    cron::job { 'update-site':
+    cron { 'update-site':
       command => 'nubis-cron update-site /usr/local/bin/nubis-update-site',
       user    => 'root',
       minute  => pick($script_interval['minute'], '*'),
