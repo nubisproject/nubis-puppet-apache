@@ -84,6 +84,18 @@ class nubis_apache($timeout=120, $port=80, $update_script_source=undef, $update_
         expires_default => 'access plus 30 minutes';
   }
 
+  # We want the default timeouts to also match our specified timeout
+  # Right now, this is a missing feature in puppetlabs/apache, so we work around it here
+  if $::osfamily == 'Debian' {
+    exec { 'fix-apache-reqtimeouts':
+      command => "sed -i -E -e's/^(RequestReadTimeout\s+(header|body))=([0-9-]+)/\\1=${timeout}/'  ${::apache::mod_dir}/reqtimeout.conf",
+      require => [
+        Class['Apache::Mod::Reqtimeout'],
+      ],
+      path    => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
+    }
+  }
+
   file { "/etc/nubis.d/99-${::project_name}":
     ensure  => file,
     owner   => root,
