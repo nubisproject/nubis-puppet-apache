@@ -43,7 +43,13 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-class nubis_apache($timeout=120, $port=80, $update_script_source=undef, $update_script_interval=undef) {
+class nubis_apache(
+  $timeout=120,
+  $port=80,
+  $update_script_source=undef,
+  $update_script_interval=undef,
+  $mpm_module_type='event'
+) {
 
   include ::nubis_apache::exporter
   include ::nubis_apache::fluentd
@@ -68,7 +74,7 @@ class nubis_apache($timeout=120, $port=80, $update_script_source=undef, $update_
 
   class {
     'apache':
-        mpm_module          => 'event',
+        mpm_module          => $mpm_module_type,
         keepalive           => 'On',
         timeout             => $timeout,
         keepalive_timeout   => $timeout,
