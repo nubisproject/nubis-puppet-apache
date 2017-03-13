@@ -8,8 +8,14 @@
   "project_page": "https://github.com/nubisproject/nubis-puppet-apache",
   "issues_url": "https://github.com/nubisproject/nubis-puppet-apache/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+      "name": "puppetlabs-apache",
+      "version_requirement": "1.10.0"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
   ],
   "data_provider": null
 }
-
