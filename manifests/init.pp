@@ -48,6 +48,7 @@ class nubis_apache(
   $port=80,
   $update_script_source=undef,
   $update_script_interval=undef,
+  $check_url='/',
   $mpm_module_type='event'
 ) {
 
@@ -64,11 +65,13 @@ class nubis_apache(
 
   include nubis_discovery
 
+  $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}",
+
   nubis::discovery::service {
     $::project_name:
       tags     => [ 'apache' ],
       port     => $port,
-      check    => "/usr/bin/curl -If http://localhost:${port}",
+      check    => $check_command,
       interval => '30s',
   }
 
