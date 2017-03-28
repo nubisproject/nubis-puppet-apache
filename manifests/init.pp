@@ -65,7 +65,7 @@ class nubis_apache(
 
   include nubis_discovery
 
-  $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}",
+  $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}"
 
   nubis::discovery::service {
     $::project_name:
