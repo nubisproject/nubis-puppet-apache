@@ -18,19 +18,19 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 export PATH
 
+# shellcheck disable=SC1090
+[ -r /etc/default/$name ] && . /etc/default/$name
+# shellcheck disable=SC1090
+[ -r /etc/sysconfig/$name ] && . /etc/sysconfig/$name
+
 name=apache_exporter
 program="/usr/local/bin/$name"
-args="-telemetry.address :9103"
+args="-telemetry.address :9103 -scrape_uri $SCRAPE_URI"
 pidfile=/var/run/$name.pid
 user=root
 group=root
 chroot="/"
 chdir="/"
-
-# shellcheck disable=SC1090
-[ -r /etc/default/$name ] && . /etc/default/$name
-# shellcheck disable=SC1090
-[ -r /etc/sysconfig/$name ] && . /etc/sysconfig/$name
 
 trace() {
   logger -t "$name" "$@"

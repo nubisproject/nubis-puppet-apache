@@ -48,10 +48,14 @@ class nubis_apache(
   $port=80,
   $update_script_source=undef,
   $update_script_interval=undef,
+  $check_url='/',
   $mpm_module_type='event'
 ) {
 
-  include ::nubis_apache::exporter
+  class { '::nubis_apache::exporter':
+    port => $port,
+  }
+
   include ::nubis_apache::fluentd
   include ::nubis_apache::atomic
 
@@ -64,11 +68,13 @@ class nubis_apache(
 
   include nubis_discovery
 
+  $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}"
+
   nubis::discovery::service {
     $::project_name:
       tags     => [ 'apache' ],
       port     => $port,
-      check    => "/usr/bin/curl -If http://localhost:${port}",
+      check    => $check_command,
       interval => '30s',
   }
 
@@ -88,6 +94,18 @@ class nubis_apache(
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
     'apache::mod::expires':
         expires_default => 'access plus 30 minutes';
+  }
+
+  # We want the default timeouts to also match our specified timeout
+  # Right now, this is a missing feature in puppetlabs/apache, so we just disable mod_reqtimeout altogether
+  if $::osfamily == 'Debian' {
+    exec { 'fix-apache-reqtimeouts':
+      command => '/usr/sbin/a2dismod reqtimeout',
+      require => [
+        Class['Apache::Mod::Reqtimeout'],
+      ],
+      path    => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
+    }
   }
 
   file { "/etc/nubis.d/99-${::project_name}":
