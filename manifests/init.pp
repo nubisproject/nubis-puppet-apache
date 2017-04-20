@@ -52,7 +52,10 @@ class nubis_apache(
   $mpm_module_type='event'
 ) {
 
-  include ::nubis_apache::exporter
+  class { '::nubis_apache::exporter':
+    port => $port,
+  }
+
   include ::nubis_apache::fluentd
   include ::nubis_apache::atomic
 
