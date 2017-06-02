@@ -44,6 +44,7 @@
 #
 
 class nubis_apache(
+  $project_name=$::project_name,
   $timeout=120,
   $port=80,
   $update_script_source=undef,
@@ -71,7 +72,7 @@ class nubis_apache(
   $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}"
 
   nubis::discovery::service {
-    $::project_name:
+    $project_name:
       tags     => [ 'apache' ],
       port     => $port,
       check    => $check_command,
@@ -108,7 +109,7 @@ class nubis_apache(
     }
   }
 
-  file { "/etc/nubis.d/99-${::project_name}":
+  file { "/etc/nubis.d/99-${project_name}":
     ensure  => file,
     owner   => root,
     group   => root,
