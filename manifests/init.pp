@@ -50,7 +50,8 @@ class nubis_apache(
   $update_script_source=undef,
   $update_script_interval=undef,
   $check_url='/',
-  $mpm_module_type='event'
+  $mpm_module_type='event',
+  $tags=[],
 ) {
 
   class { '::nubis_apache::exporter':
@@ -73,7 +74,7 @@ class nubis_apache(
 
   nubis::discovery::service {
     $project_name:
-      tags     => [ 'apache' ],
+      tags     => [ unique(sort(concat($tags, 'apache'))) ],
       port     => $port,
       check    => $check_command,
       interval => '30s',
