@@ -74,7 +74,7 @@ class nubis_apache(
 
   nubis::discovery::service {
     $project_name:
-      tags     => [ unique(sort(concat($tags, 'apache'))) ],
+      tags     => unique(sort(concat($tags, 'apache'))),
       port     => $port,
       check    => $check_command,
       interval => '30s',
