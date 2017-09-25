@@ -93,7 +93,7 @@ class nubis_apache(
         service_ensure      => false;
     'apache::mod::status':;
     'apache::mod::remoteip':
-        proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
+        proxy_ips => [ '127.0.0.1', '10.0.0.0/8','172.16.0.0/12','192.168.0.0/16' ];
     'apache::mod::expires':
         expires_default => 'access plus 30 minutes';
   }
