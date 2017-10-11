@@ -70,13 +70,11 @@ class nubis_apache(
 
   include nubis_discovery
 
-  $check_command = "/usr/bin/curl -If http://localhost:${port}${check_url}"
-
   nubis::discovery::service {
     $project_name:
       tags     => unique(sort(concat($tags, 'apache'))),
       port     => $port,
-      check    => $check_command,
+      http     => "http://localhost:${port}${check_url}",
       interval => '30s',
   }
 
