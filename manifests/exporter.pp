@@ -1,6 +1,6 @@
 class nubis_apache::exporter($port=80) {
 $apache_exporter_version = '0.4'
-$apache_exporter_url = "https://github.com/neezgee/apache_exporter/archive/v${apache_exporter_version}.tar.gz"
+$apache_exporter_url = "https://github.com/Lusitaniae/apache_exporter/releases/download/v${apache_exporter_version}/apache_exporter-${apache_exporter_version}.linux-amd64.tar.gz"
 
 notice ("Grabbing apache_exporter ${apache_exporter_version}")
 staging::file { "apache_exporter.${apache_exporter_version}.tar.gz":
