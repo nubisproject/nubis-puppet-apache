@@ -12,7 +12,7 @@ staging::extract { "apache_exporter.${apache_exporter_version}.tar.gz":
 }->
 file { '/usr/local/bin/apache_exporter':
   ensure => 'link',
-  target => "/opt/apache_exporter-${apache_exporter_version}/apache_exporter"
+  target => "/opt/apache_exporter-${apache_exporter_version}.linux-amd64/apache_exporter"
 }
 
 case $::osfamily {
