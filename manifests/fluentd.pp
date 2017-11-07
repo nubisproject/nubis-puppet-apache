@@ -49,16 +49,6 @@ fluentd::filter { 'apache_prometheus':
 # lint:ignore:single_quote_string_with_variables
       config     => {
         '<metric>' => '
-    name apache_cnt_method_code_path
-    type counter
-    desc Apache requests broken by method, status code and path
-    <labels>
-      method ${method}
-      code   ${code}
-      path   ${path}
-    </labels>
-  </metric>
-  <metric>
     name apache_cnt_method_code
     type counter
     desc Apache requests broken by method and status code
