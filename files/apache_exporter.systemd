@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache Prometheus Exporter
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/apache_exporter
+EnvironmentFile=-/etc/default/apache_exporter
+Restart=on-failure
+RestartSec=10s
+ExecStart=/bin/bash -c '/usr/local/bin/apache_exporter -telemetry.address :9103 -scrape_uri $SCRAPE_URI'
+
+[Install]
+WantedBy=multi-user.target
