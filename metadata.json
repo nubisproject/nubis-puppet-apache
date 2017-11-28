@@ -1,6 +1,6 @@
 {
   "name": "nubis-nubis_apache",
-  "version": "0.1.5",
+  "version": "0.1.14",
   "author": "nubis",
   "summary": "Nubis Apache Wrapper",
   "license": "MPL-2.0",
@@ -8,8 +8,17 @@
   "project_page": "https://github.com/nubisproject/nubis-puppet-apache",
   "issues_url": "https://github.com/nubisproject/nubis-puppet-apache/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+      "name": "puppetlabs-apache",
+      "version_requirement": ">= 1.10.0"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "camptocamp/systemd"
+    }
   ],
   "data_provider": null
 }
-
