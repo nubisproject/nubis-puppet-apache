@@ -1,5 +1,5 @@
 class nubis_apache::exporter($port=80) {
-$apache_exporter_version = '0.4.0'
+$apache_exporter_version = '0.5.0'
 $apache_exporter_url = "https://github.com/Lusitaniae/apache_exporter/releases/download/v${apache_exporter_version}/apache_exporter-${apache_exporter_version}.linux-amd64.tar.gz"
 
 notice ("Grabbing apache_exporter ${apache_exporter_version}")
