@@ -122,7 +122,7 @@ if [ -x /usr/local/bin/nubis-update-site ]; then
 fi
 
 # Start serving it
-service ${::apache::params::service_name} start
+systemctl start ${::apache::params::service_name}
 "
   }
 }
