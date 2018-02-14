@@ -32,7 +32,7 @@ if ($::systemd) {
     ensure => file,
     owner  => root,
     group  => root,
-    mode   => '0755',
+    mode   => '0644',
     source => "puppet:///modules/${module_name}/apache_exporter.systemd",
   }->
   service { 'apache_exporter':
