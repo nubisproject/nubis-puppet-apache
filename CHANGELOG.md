@@ -1,10 +1,33 @@
 # Change Log
 
-## [v0.1.14](https://github.com/nubisproject/nubis-puppet-apache/tree/v0.1.14) (2017-11-28)
-[Full Changelog](https://github.com/nubisproject/nubis-puppet-apache/compare/v0.1.13...v0.1.14)
+## [v0.1.15](https://github.com/nubisproject/nubis-puppet-apache/tree/v0.1.15) (2018-02-14)
+[Full Changelog](https://github.com/nubisproject/nubis-puppet-apache/compare/v0.1.14...v0.1.15)
+
+**Closed issues:**
+
+- use systemctl to control service [\#23](https://github.com/nubisproject/nubis-puppet-apache/issues/23)
+- apache\_exporter systemd service file is incorrectly marked as executable [\#21](https://github.com/nubisproject/nubis-puppet-apache/issues/21)
+- Update apache exporter to v0.5.0 [\#20](https://github.com/nubisproject/nubis-puppet-apache/issues/20)
+- Using amazon-ebs-amazon-linux fails with mod\_remoteip is only available in Apache 2.4 [\#7](https://github.com/nubisproject/nubis-puppet-apache/issues/7)
 
 **Merged pull requests:**
 
+- Bump version to 0.1.15 [\#26](https://github.com/nubisproject/nubis-puppet-apache/pull/26) ([gozer](https://github.com/gozer))
+- systemd unit files shouldnt be executable [\#25](https://github.com/nubisproject/nubis-puppet-apache/pull/25) ([gozer](https://github.com/gozer))
+- Use systemctl [\#24](https://github.com/nubisproject/nubis-puppet-apache/pull/24) ([gozer](https://github.com/gozer))
+- Version bump [\#22](https://github.com/nubisproject/nubis-puppet-apache/pull/22) ([limed](https://github.com/limed))
+
+## [v0.1.14](https://github.com/nubisproject/nubis-puppet-apache/tree/v0.1.14) (2017-11-28)
+[Full Changelog](https://github.com/nubisproject/nubis-puppet-apache/compare/v0.1.13...v0.1.14)
+
+**Closed issues:**
+
+- Tag v0.1.14 release [\#17](https://github.com/nubisproject/nubis-puppet-apache/issues/17)
+
+**Merged pull requests:**
+
+- Merge v0.1.14 release into develop. \[skip ci\] [\#19](https://github.com/nubisproject/nubis-puppet-apache/pull/19) ([tinnightcap](https://github.com/tinnightcap))
+- Update CHANGELOG for v0.1.14 release \[skip ci\] [\#18](https://github.com/nubisproject/nubis-puppet-apache/pull/18) ([tinnightcap](https://github.com/tinnightcap))
 - \[Centennial\] 0.1.14 [\#16](https://github.com/nubisproject/nubis-puppet-apache/pull/16) ([gozer](https://github.com/gozer))
 
 ## [v0.1.13](https://github.com/nubisproject/nubis-puppet-apache/tree/v0.1.13) (2017-11-07)
